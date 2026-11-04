@@ -70,7 +70,7 @@ ESP32-Self-Balancing-Robot/
 ├── README.md
 ├── components.md
 ├── wiring.md
-├── LICENSE
+├── LICECE
 ├── .gitignore
 │
 ├── docs/
