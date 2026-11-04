@@ -1,148 +1,114 @@
-ESP32-Based Self-Balancing Robot
+ESP32 SELF-BALANCING ROBOT
 
-<div align="center">
+Embedded Systems | Robotics | Motion Control | PID Control
 
-🤖 SELF-BALANCING ROBOT
-
-ESP32 | MPU6050 | A4988 | NEMA 16
-
-Design and Development of a Low-Power ESP32-Based Self-Balancing Robot
-
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-ESP32-black?style=for-the-badge&logo=espressif" />
+  <img src="https://img.shields.io/badge/Language-C%2B%2B-blue?style=for-the-badge&logo=cplusplus" />
+  <img src="https://img.shields.io/badge/Sensor-MPU6050-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Status-Development-orange?style=for-the-badge" />
+</p>
 
 ⸻
 
-📌 Project Overview
+Overview
 
-This project focuses on designing and developing a two-wheeled self-balancing robot using an ESP32 microcontroller.
+A two-wheeled self-balancing robot developed using an ESP32 microcontroller, MPU6050 inertial measurement sensor, and stepper motor control system.
 
-The robot uses an MPU6050 inertial measurement unit (IMU) to measure its orientation and angular velocity. The ESP32 processes the sensor information and calculates motor commands using a closed-loop PID control system.
+The project explores real-time motion sensing, feedback control, embedded programming, and robotic stability.
 
-Two NEMA 16 stepper motors, controlled through A4988 stepper motor drivers, provide movement to maintain the robot’s balance.
+System Architecture
 
-🎯 Project Objectives
+       MPU6050
+           |
+           | I2C
+           |
+         ESP32
+           |
+      PID Controller
+           |
+      STEP / DIR
+        /     \
+   A4988     A4988
+     |          |
+ NEMA 16    NEMA 16
+   LEFT       RIGHT
 
-* Develop a two-wheel self-balancing robotic platform.
-* Implement real-time tilt measurement using MPU6050.
-* Develop PID-based closed-loop control.
-* Control two stepper motors using ESP32.
-* Explore wireless robot monitoring and control.
-* Develop forward, backward, left and right movement capabilities.
+Hardware Components
 
-🛠️ Hardware Components
+Component	Quantity
+ESP32 Development Board	1
+MPU6050 Sensor	1
+A4988 Stepper Driver	2
+NEMA 16 Stepper Motor	2
+Motor Power Supply	1
 
-Component	Quantity	Function
-ESP32	1	Main controller
-MPU6050	1	Gyroscope and accelerometer
-A4988 Driver	2	Stepper motor control
-NEMA 16 Stepper Motor	2	Left and right wheel drive
-12V Power Supply	1	Motor power
-Robot Chassis	1	Mechanical structure
-Wheels	2	Locomotion
+Software & Technologies
 
-⚙️ System Architecture
+* Arduino IDE
+* C/C++
+* ESP32 Programming
+* I2C Communication
+* MPU6050 Sensor Integration
+* Complementary Filter
+* PID Control
+* Stepper Motor Control
 
-1. MPU6050 measures acceleration and angular velocity.
-2. ESP32 reads sensor data through I2C communication.
-3. Sensor fusion estimates the robot’s tilt angle.
-4. PID controller calculates the required correction.
-5. ESP32 generates STEP and DIR signals.
-6. A4988 drivers control the left and right stepper motors.
-7. Motor movement helps correct the robot’s tilt.
+Control Method
 
-🔌 Communication Interfaces
+The MPU6050 measures acceleration and angular velocity.
 
-Interface	Connection
-I2C	ESP32 ↔ MPU6050
-Digital GPIO	ESP32 ↔ A4988
-STEP / DIR	ESP32 ↔ Motor drivers
-Power	External motor supply
+The ESP32 processes sensor data using a complementary filter to estimate tilt angle.
 
-🧠 Control Algorithm
+A PID controller calculates the corrective output required to control the two stepper motors.
 
-The robot uses a closed-loop feedback control approach.
-
-1. Sensor Measurement
-
-The MPU6050 provides:
-
-* Accelerometer readings
-* Gyroscope readings
-* Angular velocity
-
-2. Sensor Fusion
-
-A complementary filter can combine accelerometer and gyroscope data to estimate the robot’s tilt angle.
-
-3. PID Control
-
-The PID controller calculates motor correction using:
-
-PID = Kp × Error + Ki × Integral + Kd × Derivative
-
-Where:
-
-* Kp = Proportional gain
-* Ki = Integral gain
-* Kd = Derivative gain
-* Error = Difference between target and measured tilt angle
-
-4. Motor Control
-
-The ESP32 generates step and direction signals for both A4988 drivers.
-
-📂 Project Structure
+Repository Structure
 
 ESP32-Self-Balancing-Robot/
 │
+├── main.ino
 ├── README.md
+├── components.md
+├── wiring.md
+├── LICENSE
+├── .gitignore
 │
-├── Code/
-│   ├── main.ino
-│   ├── mpu6050.ino
-│   ├── pid_controller.ino
-│   └── motor_control.ino
+├── docs/
+│   └── project-overview.md
 │
-├── Circuit/
-│   └── wiring_diagram.png
+├── images/
+│   └── README.md
 │
-├── Images/
-│   └── robot_prototype.jpg
+├── src/
+│   └── README.md
 │
-└── Documentation/
-    ├── components.md
-    └── working_principle.md
+└── assets/
+    └── README.md
 
-🔬 Engineering Considerations
+Development Goals
 
-* Sensor calibration is essential for accurate angle estimation.
-* PID gains require experimental tuning.
-* Both motors must be synchronized.
-* Motor driver current limits must match the motor specifications.
-* The ESP32 and motor drivers must share a common ground.
-* A suitable power supply and thermal management are important.
+* Real-time tilt detection
+* Closed-loop balancing control
+* Stable stepper motor operation
+* Wireless robot control
+* Improved response and stability
 
-🚀 Future Development
+Current Development Status
 
-* Wireless control interface.
-* Improved PID tuning.
-* Real-time sensor monitoring.
-* Directional movement control.
-* Improved mechanical stability.
-* Performance testing and optimization.
+Hardware integration and firmware development are ongoing.
 
-👨‍💻 Developer
+Future Improvements
 
-Mohammed Arshan M
-
-B.E. Mechatronics Engineering
-
-Interests: Robotics | Embedded Systems | Electric Vehicles | Industrial Automation
+* Wireless mobile control
+* Improved sensor filtering
+* PID parameter optimization
+* Robot movement in multiple directions
+* Mechanical and electrical optimization
 
 ⸻
 
-<div align="center">
-
-ENGINEERING IDEAS INTO REAL-WORLD SOLUTIONS.
-
-</div>
+<p align="center">
+  <b>Designed & Developed by Mohammed Arshan M</b>
+  <br>
+  Mechatronics Engineering | Robotics | Embedded Systems
+</p>
